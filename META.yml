@@ -24,4 +24,4 @@ requires:
   IPC::Run: 0
   Memoize: 0
   Text::CSV_XS: 0
-version: 0.01
+version: 0.02

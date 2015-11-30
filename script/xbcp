@@ -518,11 +518,11 @@ __END__
 
 =head1 NAME
 
-pmbcp - Bulk copy for Sybase or Oracle
+xbcp - Bulk copy for Sybase or Oracle
 
 =head1 SYNOPSIS
 
-pmbcp [[database.]owner|schema.]table {in|out} [file] [options]
+xbcp [[database.]owner|schema.]table {in|out} [file] [options]
 
  Options:
    -S     server
@@ -616,7 +616,7 @@ pmbcp [[database.]owner|schema.]table {in|out} [file] [options]
 
 =head1 DESCRIPTION
 
-B<pmbcp> will load data to a table from a file, or extract data from
+B<xbcp> will load data to a table from a file, or extract data from
 a table to a file.
 
 If a server is provided, the database type is assumed to be Sybase.
@@ -642,9 +642,9 @@ option. Otherwise, your process will appear to hang for a long
 time after the actual bcp is done.
 
 When loading into Oracle, and any data for for any date column(s)
-is found within the first 1000 rows, pmbcp will try to automatically
+is found within the first 1000 rows, xbcp will try to automatically
 determine the date format of the column(s).  If no data is found within
-the first 1000 rows, or if pmbcp can not determine the format, then
+the first 1000 rows, or if xbcp can not determine the format, then
 the default date format will be used (also see the -dfmt and -n options).
 
 If either of the B<-P> or B<-2P> options are equal to "-", then the

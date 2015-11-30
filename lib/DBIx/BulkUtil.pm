@@ -6,7 +6,7 @@ use Carp qw(confess);
 use strict;
 use warnings;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 # Override this
 sub passwd {
@@ -31,7 +31,7 @@ my @connect_options = qw(
   RetryCount
   RetryMinutes
   BulkLogin
-  BlankNull
+  NoBlankNull
   Silent
   NoCharset
   NoServer
@@ -276,7 +276,7 @@ sub util {
   my %util_args;
 
   if ( $args and ref($args) ) {
-    $util_args{BlankNull} = 1 if $args->{BlankNull};
+    $util_args{NoBlankNull} = 1 if $args->{NoBlankNull};
   }
 
   # Prevent dbh from disconnecting after fork in child processes
@@ -2040,7 +2040,7 @@ sub bcp_in {
 
   # Convert empty string to NULL
   # Should be default but we don't want to break existing apps
-  my $null_blanks = $self->{BlankNull} ? ' NULL(BLANKS)' : '';
+  my $null_blanks = $self->{NoBlankNull} ? ' NULL(BLANKS)' : '';
 
   # Columns that we will let default to the schema default
   my $dflt = $opts->{Default} || [];
@@ -3156,6 +3156,11 @@ Will wait this many minutes before trying to connect to the database again.
 For Sybase, enables the use of the blk_prepare method on the utility
 handle for bulk inserts (i.e. the syb_bcp_attribs attribute on insert
 statements).
+
+=item NoBlankNull
+
+For SybaseIQ, when loading a file via bcp_in, will not convert blank
+columns to null values.
 
 =item Dsl
 
