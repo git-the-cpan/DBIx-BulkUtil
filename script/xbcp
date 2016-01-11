@@ -7,7 +7,7 @@ use Getopt::Long   qw(GetOptions :config no_ignore_case);
 use File::Basename qw(basename);
 use Pod::Usage     qw(pod2usage);
 use List::Util     qw(min max);
-use PM::Utilities  qw(Print);
+use Time::Piece    qw(localtime);
 
 $|++;
 
@@ -514,6 +514,12 @@ sub determine_db_type {
   return 'Sybase';
 }
 
+# Returns the current date and time
+sub Timestamp { localtime()->strftime('%Y-%m-%d %H:%M:%S') }
+
+# Print timestamped message
+sub Print { printf("[%s] %s\n", Timestamp(), shift) }
+
 __END__
 
 =head1 NAME
@@ -526,7 +532,7 @@ xbcp [[database.]owner|schema.]table {in|out} [file] [options]
 
  Options:
    -S     server
-   -D     database (required for Oracle, default: pm)
+   -D     database
    -r     row terminator (default: "\n")
    -t     field terminator (default: "|")
    -T     database type (Oracle|Sybase)
