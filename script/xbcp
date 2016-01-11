@@ -536,9 +536,9 @@ xbcp [[database.]owner|schema.]table {in|out} [file] [options]
    -r     row terminator (default: "\n")
    -t     field terminator (default: "|")
    -T     database type (Oracle|Sybase)
-   -env   environment (default: ENV_BASE env variable)
-   -U     username (default: ENV_OP env variable)
-   -P     password (default from TRDATADIR/control pw file)
+   -env   environment
+   -U     username
+   -P     password
    -H     column header row exists in first row of file
    -h     # of column headers at beginning of file
    -A     network packet size

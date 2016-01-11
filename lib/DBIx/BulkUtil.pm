@@ -6,7 +6,7 @@ use Carp qw(confess);
 use strict;
 use warnings;
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 # Override this
 sub passwd {
@@ -3217,10 +3217,7 @@ Same as connect method, but calls the DBIx::BulkUtil connect_cached method with 
 
 =item passwd()
 
-Lookup the password in the password file '.xfile_user'. Arguments are (user, directory, env)
-User defaults to the environment variables ENV_OP. Env defaults to the environment
-variable ENV_BASE. Directory defaults to the first directory where the
-password file is found from the list HOME/control/ENV, HOME/control, then TRDATADIR/control.
+Dummy function to override for determining password.
 
 =back
 
